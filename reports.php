@@ -1,16 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
-    header("Location: index.html");
+require 'php/connection.php';
+
+if (!isset($_SESSION['logged'])) {
+    header("Location: index.php");
     exit;
 }
-
-// Placeholder for database connection
-$host = 'localhost';
-$dbname = 'inventory_db';
-$username = 'root';
-$password = '';
-$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
 // Get inventory data for reports
 $stmt = $conn->prepare("SELECT * FROM inventory");
@@ -24,14 +19,14 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Reports</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="dashboard.php">Home</a></li>
-            <li><a href="inventory_reports.php">Inventory Reports</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="reports.php">Reports</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </nav>
 
@@ -48,7 +43,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php foreach ($inventory as $item) { ?>
                 <tr>
-                    <td><?php echo $item['item_id']; ?></td>
+                    <td><?php echo $item['id']; ?></td>
                     <td><?php echo $item['item_name']; ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td><?php echo $item['price']; ?></td>

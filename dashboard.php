@@ -1,16 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
-    header("Location: index.html");
+require 'php/connection.php';
+
+if (!isset($_SESSION['logged'])) {
+    header("Location: index.php");
     exit;
 }
-
-// Placeholder for database connection
-$host = 'localhost';
-$dbname = 'inventory_db';
-$username = 'root';
-$password = '';
-$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
 // Get inventory data from database
 $stmt = $conn->prepare("SELECT * FROM inventory");
@@ -24,39 +19,23 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Inventory Management</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="dashboard.php">Home</a></li>
-            <li><a href="inventory_reports.php">Inventory Reports</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="reports.php">Reports</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </nav>
 
     <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
 
     <h3>Inventory List</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Item ID</th>
-                <th>Item Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($inventory as $item) { ?>
-                <tr>
-                    <td><?php echo $item['item_id']; ?></td>
-                    <td><?php echo $item['item_name']; ?></td>
-                    <td><?php echo $item['quantity']; ?></td>
-                    <td><?php echo $item['price']; ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    <script src="js/chart.js"></script>
 </body>
 </html>

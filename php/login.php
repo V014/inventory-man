@@ -1,12 +1,6 @@
 <?php
 session_start();
-
-// Placeholder for your database connection
-$host = 'localhost';
-$dbname = 'inventory_db';
-$username = 'root';
-$password = '';  // Assuming no password for local environment
-$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+require 'connection.php'; // reference connection page
 
 // Handle login form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,9 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        $_SESSION['loggedin'] = true;
+        $_SESSION['logged'] = true;
         $_SESSION['username'] = $user;
-        header("Location: dashboard.php"); // Redirect to dashboard page
+        header("Location: ../dashboard.php"); // Redirect to dashboard page
     } else {
         echo "<script>alert('Invalid login credentials');</script>";
     }
