@@ -7,10 +7,13 @@ if (!isset($_SESSION['logged'])) {
     exit;
 }
 
-// Get inventory data from database
-$stmt = $conn->prepare("SELECT * FROM inventory");
+// Get inventory data from the database
+$stmt = $conn->prepare("SELECT item_name, price FROM inventory");
 $stmt->execute();
 $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Output the inventory data as JSON
+// echo json_encode($inventory);
 ?>
 
 <!DOCTYPE html>
@@ -25,17 +28,36 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <nav>
-        <ul>
+        <h2 class="logo">Welcome, <?php echo $_SESSION['username']; ?>!</h2>
+        <ul class="nav-links">
             <li><a href="dashboard.php">Home</a></li>
             <li><a href="reports.php">Reports</a></li>
             <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </nav>
-
-    <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
-
-    <h3>Inventory List</h3>
+    <!-- Add Inventory -->
+    <div class="container">
+        <form action="php/add_inventory.php" class="form" method="POST">
+            <h3>Add Inventory</h3>
+            <input type="text" placeholder="Item Name" name="item_name">
+            <input type="text" placeholder="Quantity" name="quantity">
+            <input type="number" placeholder="Price" name="price">
+            <select name="category" id="category">
+                    <option value="select">Select Category</option>
+                    <option value="consumable">Consumable</option>
+                    <option value="administrative">Administrative</option>
+                    <option value="client">Client</option>
+                    <option value="contingency">Contingency</option>
+                    <option value="logistics">Logistics</option>
+            </select>
+            <input type="submit" value="Add" name="submit">
+        </form>    
+    </div>
+     <form action=""></form>
+    <!-- Chart -->
+    <h3>Quick Report</h3>
     <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
     <script src="js/chart.js"></script>
 </body>
 </html>

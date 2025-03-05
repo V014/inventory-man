@@ -23,7 +23,8 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <nav>
-        <ul>
+        <h2 class="logo">Welcome, <?php echo $_SESSION['username']; ?>!</h2>
+        <ul class="nav-links">
             <li><a href="dashboard.php">Home</a></li>
             <li><a href="reports.php">Reports</a></li>
             <li><a href="php/logout.php">Logout</a></li>
@@ -38,6 +39,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
+                <th>Category</th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +49,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $item['item_name']; ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td><?php echo $item['price']; ?></td>
+                    <td><?php echo $item['category']; ?></td>
                 </tr>
             <?php } ?>
         </tbody>

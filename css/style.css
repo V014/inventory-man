@@ -1,32 +1,49 @@
 body {
     font-family: Arial, sans-serif;
+    /* margin: 0;
+    padding: 0; */
+}
+/* Navigation */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    padding: 10px 10px 10px;
+}
+
+.logo a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-nav {
-    background-color: #333;
-    padding: 10px;
+.nav-links li {
+    margin-left: 10px;
 }
 
-nav ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: white;
+.nav-links li a {
+    color: #333;
+    text-align: center;
+    padding: 8px 10px;
+    border-radius: 5px;
     text-decoration: none;
 }
 
-h2, h3 {
-    color: #333;
+.nav-links li a:hover {
+    background-color: #333;
+    color: white;
 }
 
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -42,6 +59,7 @@ th, td {
     text-align: left;
 }
 
+/* Login */
 .login-container {
     width: 300px;
     margin: 0 auto;
