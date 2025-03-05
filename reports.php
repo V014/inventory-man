@@ -1,5 +1,7 @@
 <?php
 session_start();
+require 'php/connection.php';
+
 if (!isset($_SESSION['logged'])) {
     header("Location: index.html");
     exit;
