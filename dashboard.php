@@ -1,16 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
+require 'php/connection.php';
+
+if (!isset($_SESSION['logged'])) {
     header("Location: index.html");
     exit;
 }
-
-// Placeholder for database connection
-$host = 'localhost';
-$dbname = 'inventory_db';
-$username = 'root';
-$password = '';
-$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
 // Get inventory data from database
 $stmt = $conn->prepare("SELECT * FROM inventory");
