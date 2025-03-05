@@ -1,6 +1,9 @@
-- Main Features
+#Features
 - Inventory Management
+-- Adding Inventory
+-- Deleting Inventory
+-- Updating Inventory
 - Reports
-- Adding Inventory
-- Deleting Inventory
-- Updating Inventory
+
+- Product Tracking
+- Cost of goods
