@@ -3,7 +3,7 @@ session_start();
 require 'php/connection.php';
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.html");
+    header("Location: index.php");
     exit;
 }
 
@@ -25,8 +25,8 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <nav>
         <ul>
             <li><a href="dashboard.php">Home</a></li>
-            <li><a href="inventory_reports.php">Inventory Reports</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="reports.php">Reports</a></li>
+            <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </nav>
 
@@ -45,7 +45,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php foreach ($inventory as $item) { ?>
                 <tr>
-                    <td><?php echo $item['item_id']; ?></td>
+                    <td><?php echo $item['id']; ?></td>
                     <td><?php echo $item['item_name']; ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td><?php echo $item['price']; ?></td>
