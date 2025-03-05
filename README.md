@@ -1,0 +1,6 @@
+- Main Features
+- Inventory Management
+- Reports
+- Adding Inventory
+- Deleting Inventory
+- Updating Inventory
