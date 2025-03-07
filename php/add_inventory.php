@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged'])) {
     header("Location: ../index.php");
     exit;
 } else {
-    if (isset($_POST['submit'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $item_name = $_POST['item_name'];
         $quantity = $_POST['quantity'];
         $price = $_POST['price'];
