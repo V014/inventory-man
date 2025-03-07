@@ -22,6 +22,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
         <h2 class="logo">Welcome, <?php echo $_SESSION['username']; ?>!</h2>
         <ul class="nav-links">
@@ -30,7 +31,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </nav>
-
+    <!-- Inventory Report -->
     <h2>Inventory Reports</h2>
     <table>
         <thead>

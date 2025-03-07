@@ -1,5 +1,4 @@
 <?php
-
 // Placeholder for database connection
 $host = 'localhost';
 $dbname = 'inventory-man';
