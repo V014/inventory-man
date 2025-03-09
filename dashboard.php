@@ -35,29 +35,38 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <li><a href="php/logout.php">Logout</a></li>
         </ul>
     </nav>
-    <!-- Add Inventory -->
-    <div class="container">
-        <form action="php/add_inventory.php" class="form" method="POST">
-            <h3>Add Inventory</h3>
-            <input type="text" placeholder="Item Name" name="item_name">
-            <input type="number" placeholder="Quantity" name="quantity">
-            <input type="number" placeholder="Price" name="price">
-            <select name="category" id="category">
-                    <option value="select">Select Category</option>
-                    <option value="consumable">Consumable</option>
-                    <option value="administrative">Administrative</option>
-                    <option value="client">Client</option>
-                    <option value="contingency">Contingency</option>
-                    <option value="logistics">Logistics</option>
-            </select>
-            <input type="submit" value="Add" name="submit">
-        </form>    
-    </div>
-     <form action=""></form>
-    <!-- Chart -->
-    <h3>Quick Report</h3>
-    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-
-    <script src="js/chart.js"></script>
+    <main>
+        <!-- Sticky Sidebar -->
+        <aside>
+            <form action="" class="form">
+                <input type="text" name="" id="" placeholder="">
+                <input type="text" name="" id="" placeholder="">
+                <input type="text" name="" id="" placeholder="">
+                <input type="button" value="Add Inventory" name="">
+            </form>
+        </aside>
+        <!-- Add Inventory -->
+        <div class="container">
+            <form action="php/add_inventory.php" class="form" method="POST">
+                <h3>Add Inventory</h3>
+                <input type="text" placeholder="Item Name" name="item_name">
+                <input type="number" placeholder="Quantity" name="quantity">
+                <input type="number" placeholder="Price" name="price">
+                <select name="category" id="category">
+                        <option value="select">Select Category</option>
+                        <option value="consumable">Consumable</option>
+                        <option value="administrative">Administrative</option>
+                        <option value="client">Client</option>
+                        <option value="contingency">Contingency</option>
+                        <option value="logistics">Logistics</option>
+                </select>
+                <input type="submit" value="Add" name="submit">
+            </form>    
+        </div>
+        <!-- Chart -->
+        <h3>Quick Report</h3>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        <script src="js/chart.js"></script>
+    </main>
 </body>
 </html>
