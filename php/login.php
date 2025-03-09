@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->rowCount() > 0) {
         $_SESSION['logged'] = true;
         $_SESSION['username'] = $user;
-        header("Location: ../dashboard.php"); // Redirect to dashboard page
+        header("Location: ../home.php"); // Redirect to dashboard page
     } else {
         echo "<script>alert('Invalid login credentials');</script>";
     }
