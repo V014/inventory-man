@@ -7,8 +7,8 @@ if (!isset($_SESSION['logged'])) {
     exit;
 }
 
-// Get inventory data from the database
-$stmt = $conn->prepare("SELECT item_name, price FROM inventory");
+// Get inventory data for reports
+$stmt = $conn->prepare("SELECT * FROM inventory");
 $stmt->execute();
 $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -16,9 +16,10 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Home - Inventory-man</title>
+  <title>Statistics - Inventory-man</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/style-new.css">
+  <link rel="stylesheet" href="css/table.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 <body>
@@ -31,7 +32,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <ul class="sidebar-list">
-      <li class="sidebar-list-item active">
+      <li class="sidebar-list-item">
         <a href="home.php">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Home</span>
@@ -43,7 +44,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <span>Inventory</span>
         </a>
       </li>
-      <li class="sidebar-list-item">
+      <li class="sidebar-list-item active">
         <a href="statistics.php">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
           <span>Statistics</span>
@@ -124,8 +125,28 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="product-area-wrapper">
-      <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-      <script src="js/chart.js"></script>
+      <table>
+          <thead>
+              <tr>
+                  <th>Item ID</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Category</th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php foreach ($inventory as $item) { ?>
+                  <tr>
+                      <td><?php echo $item['id']; ?></td>
+                      <td><?php echo $item['item_name']; ?></td>
+                      <td><?php echo $item['quantity']; ?></td>
+                      <td><?php echo $item['price']; ?></td>
+                      <td><?php echo $item['category']; ?></td>
+                  </tr>
+              <?php } ?>
+          </tbody>
+      </table>
     </div>
   </div>
 </div>
