@@ -16,7 +16,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Products - Inventory Management</title>
+  <title>Inventory - Inventory-man</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="css/style-new.css">
 
