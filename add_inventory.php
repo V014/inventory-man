@@ -16,7 +16,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Add Inventory</title>
+  <title>Statistics - Inventory-man</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/table.css">
@@ -90,7 +90,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </svg>
       </button>
-      <a href="add_inventory.php"><button class="app-content-headerButton">Add Product</button></a>
+      <button class="app-content-headerButton">Add Product</button>
     </div>
     <div class="app-content-actions">
       <input class="search-bar" placeholder="Search..." type="text">
@@ -131,28 +131,11 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="product-area-wrapper">
-      <table>
-          <thead>
-              <tr>
-                  <th>Item ID</th>
-                  <th>Item Name</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Category</th>
-              </tr>
-          </thead>
-          <tbody>
-              <?php foreach ($inventory as $item) { ?>
-                  <tr>
-                      <td><?php echo $item['id']; ?></td>
-                      <td><?php echo $item['item_name']; ?></td>
-                      <td><?php echo $item['quantity']; ?></td>
-                      <td><?php echo $item['price']; ?></td>
-                      <td><?php echo $item['category']; ?></td>
-                  </tr>
-              <?php } ?>
-          </tbody>
-      </table>
+        <form action="php/add_inventory.php" method="post">
+            <div class="inventory-form">
+                <input type="text" name="item_name" id="item_name" placeholder="Item Name">
+            </div>
+        </form>  
     </div>
   </div>
 </div>
