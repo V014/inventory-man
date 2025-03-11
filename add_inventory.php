@@ -131,9 +131,19 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="product-area-wrapper">
-        <form action="php/add_inventory.php" method="post">
-            <div class="inventory-form">
-                <input type="text" name="item_name" id="item_name" placeholder="Item Name">
+        <form action="php/add_inventory.php" method="POST" class="inventory-form">
+            <div class="">
+                <input type="text" class="inventory-form-input" name="item_name" id="item_name" placeholder="Item Name">
+                <input type="text" class="inventory-form-input" name="quantity" id="quantity" placeholder="Quantity">
+                <input type="text" class="inventory-form-input" name="price" id="price" placeholder="Price">
+                <select class="inventory-form-input" name="category" id="category">
+                    <option value="select_category">Select Item Category</option>
+                    <option value="consumable">Consumable</option>
+                    <option value="administrative">Administrative</option>
+                    <option value="client">Client</option>
+                    <option value="contingency">Contingency</option>
+                    <option value="logistics">Logistics</option>
+                </select>
             </div>
         </form>  
     </div>

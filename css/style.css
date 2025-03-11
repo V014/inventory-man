@@ -20,6 +20,33 @@
   --filter-shadow: rgba(16, 24, 39, 0.8) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.inventory-form {
+  /* background-color: var(--app-content-secondary-color); */
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.inventory-form-input {
+  padding: 6px;
+  border-radius: 6px;
+  border: solid 1px var(--app-content-secondary-color);
+  background-color: var(--app-content-secondary-color);
+  transition: 150ms ease;
+}
+
+.inventory-form-input:hover {
+  border-color: var(--action-color);
+}
+
+.inventory-form-input:focus {
+  outline: none;
+  border-color: var(--app-content-main-color);
+}
+
+select {
+  color: #757575;
+}
+
 .light:root {
   --app-bg: #fff;
   --sidebar: #f3f6fd;

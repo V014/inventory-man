@@ -131,6 +131,24 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="product-area-wrapper">
+        <form action="php/add_inventory.php" method="POST" class="inventory-form">
+            <div class="">
+                <input type="text" class="inventory-form-input" name="item_name" id="item_name" placeholder="Item Name">
+                <input type="number" class="inventory-form-input" name="quantity" id="quantity" placeholder="Quantity">
+                <input type="number" class="inventory-form-input" name="price" id="price" placeholder="Price">
+                <select class="inventory-form-input" name="category" id="category">
+                    <option value="select_category">Select Item Category</option>
+                    <option value="consumable">Consumable</option>
+                    <option value="administrative">Administrative</option>
+                    <option value="client">Client</option>
+                    <option value="contingency">Contingency</option>
+                    <option value="logistics">Logistics</option>
+                </select>
+                <input type="submit" class="app-content-headerButton" value="Add Inventory" name="submit">
+            </div>
+        </form>  
+    </div>
+    <div class="product-area-wrapper">
       <table>
           <thead>
               <tr>
@@ -139,6 +157,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <th>Quantity</th>
                   <th>Price</th>
                   <th>Category</th>
+                  <th>Value</th>
               </tr>
           </thead>
           <tbody>
@@ -149,6 +168,7 @@ $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       <td><?php echo $item['quantity']; ?></td>
                       <td><?php echo $item['price']; ?></td>
                       <td><?php echo $item['category']; ?></td>
+                      <td><?php echo $item['quantity'] * $item['price']; ?></td>
                   </tr>
               <?php } ?>
           </tbody>

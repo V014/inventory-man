@@ -15,7 +15,7 @@ if (!isset($_SESSION['logged'])) {
         $stmt = $conn->prepare("INSERT INTO inventory (id, item_name, quantity, price, category, date) VALUES (NULL, ?, ?, ?, ?, NULL)");
         $stmt->execute([$item_name, $quantity, $price, $category]);
 
-        header("Location: ../dashboard.php");
+        header("Location: ../statistics.php");
     }
 }
 
