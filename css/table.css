@@ -1,13 +1,19 @@
 /* Table */
 table {
     width: 100%;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     margin-top: 20px;
     color: white;
 }
 
-table, th, td {
+/* table, th, td {
     border: 1px solid white;
+    background-color: #1D283C;
+} */
+
+th {
+    background-color: #1D283C; 
+    border-radius: 4px;
 }
 
 th, td {
