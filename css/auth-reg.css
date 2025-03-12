@@ -91,7 +91,7 @@ div:has(input:focus) > label{
   background-color: var(--text-color);
 }
 form input::placeholder{
-  color: var(--text-color);
+  color: var(--base-color);
 }
 form button{
   margin-top: 10px;
