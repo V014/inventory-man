@@ -26,7 +26,7 @@
       </div>
       <button type="submit">Login</button>
     </form>
-    <!-- <p>New here? <a href="signup.html">Create an Account</a></p> -->
+    <p>New here? <a href="php">Create an Account</a></p>
   </div>
 </body>
 </html>
